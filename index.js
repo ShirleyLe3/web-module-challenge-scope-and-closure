@@ -27,10 +27,11 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
- * 
+ *        counter1 code contains two functions, whereas counter2 code carries out one.
  * 2. Which of the two uses a closure? How can you tell?
- * 
+ *        counter 1 uses a nested function that adds 1 to the output of count
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ *        counter1 code is more suitable for a scenario where points can be accumulated. counter2 code would apply to a game that consists of one round each. 
  *
 */
 
@@ -56,15 +57,23 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(max){
+  max = 3;
+  return Math.round(Math.random() *Math.floor(max));   
+  
 }
+
+console.log(inning());
+
+
 
 /* Task 3: finalScore()
 
-Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
+Write a higher order function called `finalScore` that 
+accepts the callback function `inning` (from above) 
+and a number of innings and 
+
+and returns the final score of the game in the form of an object.
 
 For example, 
 
@@ -76,11 +85,23 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, n){
 
-  /*Code Here*/
+  let totalPoints = [];
+  
+  for (let i = 0; i <= numOfInnings; i++) {
+  totalPoints.push(inning(3));
+  }
+  const add = (a, b) =>
+  a + b;
+  const sum = ;
+
 
 }
+// console.log(finalScore(inning, 9));
+
+
+
 
 /* Task 4: 
 
@@ -103,8 +124,32 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
-}
+function scoreboard(cb, numOfInnings) {
+
+    let totalPoints = [];
+  
+  for (let i = 0; i <= numOfInnings; i++) {
+  totalPoints.push(inning(3));
+  }
+  const add = (a, b) =>
+  a + b;
+  const sum = totalPoints.reduce(add);
+  console.log();
+  
+
+  // let totalPoints2 = [];
+  
+  // for (let i = 0; i <= numOfInnings; i++) {
+  // totalPoints2.push(inning(3));
+  // }
+  // const add2 = (a, b) =>
+  // a + b;
+  // const sum2 = totalPoints2.reduce(add2);
+  // console.log(sum2);
+  
+  }
+  // finalScore(inning, 1); 
+  
+
 
 
