@@ -85,20 +85,27 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(inning, n){
+function finalScore(callback, n){
 
-  let totalPoints = [];
-  
-  for (let i = 0; i <= numOfInnings; i++) {
-  totalPoints.push(inning(3));
+  let points = [];
+  const home = 0;
+  const away = 0;
+  for (let i=0; i<=n; i++ ) {
+    home += callback()
+    away += callback()
+  } 
+
+    return {
+      "Home": home,
+      "Away": away,
+    };
+
   }
-  const add = (a, b) =>
-  a + b;
-  const sum = ;
+    
+
+console.log(finalScore(inning, 9));
 
 
-}
-// console.log(finalScore(inning, 9));
 
 
 
@@ -124,17 +131,17 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(cb, numOfInnings) {
+// function scoreboard(cb, n) {
 
-    let totalPoints = [];
+//     let totalPoints = [];
   
-  for (let i = 0; i <= numOfInnings; i++) {
-  totalPoints.push(inning(3));
-  }
-  const add = (a, b) =>
-  a + b;
-  const sum = totalPoints.reduce(add);
-  console.log();
+//   for (let i = 0; i <= numOfInnings; i++) {
+//   totalPoints.push(inning(3));
+//   }
+//   const add = (a, b) =>
+//   a + b;
+//   const sum = totalPoints.reduce(add);
+//   console.log();
   
 
   // let totalPoints2 = [];
@@ -147,9 +154,43 @@ function scoreboard(cb, numOfInnings) {
   // const sum2 = totalPoints2.reduce(add2);
   // console.log(sum2);
   
-  }
+  // }
   // finalScore(inning, 1); 
   
 
 
 
+
+
+  function scoreBoard(callback, n){
+    let homeScore = 0;
+    let awayScore = 0;
+    let counter = 0;
+    let scoreInfo = [];
+    let finalHomeScore = 0;
+    let finalAwayScore = 0;
+   
+      for (let i = 1; i<=n; i++) {
+      homeScore = callback()
+      awayScore = callback()
+      finalHomeScore += homeScore
+      finalAwayScore += awayScore
+      counter++
+       if (counter === 1) {
+           scoreInfo.push(i +"st inning: " + homeScore + " - " + awayScore)
+       }
+       else if (counter === 2) {
+           scoreInfo.push(i+ "nd inning: " + homeScore + " - " + awayScore)
+       }
+       else if (counter === 3) {
+           scoreInfo.push(i+ "rd inning: " + homeScore + " - " + awayScore)
+       } else {
+       scoreInfo.push(i+ "th inning: " + homeScore + " - " + awayScore)
+       }
+     }
+      scoreInfo.push("Final Score: " + finalHomeScore + " - " + finalAwayScore)
+    
+     return scoreInfo;
+   } 
+   (scoreBoard(inning, 9))
+  
